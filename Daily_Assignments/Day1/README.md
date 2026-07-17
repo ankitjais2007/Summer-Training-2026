@@ -15,7 +15,7 @@ Installed:
 
 # receipt.py
                          CityKart
-************************************************************
+
                 Items           Price
                 t-shirt :       449
                 t-shirt :       499
