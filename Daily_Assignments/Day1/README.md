@@ -12,3 +12,16 @@ Installed:
 
     did not get any issues because I followed the  same thing what our
     Teacher told.
+
+# receipt.py
+                         CityKart
+************************************************************
+                Items           Price
+                t-shirt :       449
+                t-shirt :       499
+                jeans :         999
+         ******************************
+                Total :         1947
+************************************************************
+                         Thank You!
+
