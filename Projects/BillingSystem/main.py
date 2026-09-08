@@ -24,7 +24,7 @@ class BillingApp(tk.Tk):
     def setup_style(self):
         style = ttk.Style(self)
         
-        style.theme_use("xpnative")
+        style.theme_use("clam")
         
         style.configure("Title.TLabel", font=("Segoe UI", 20, "bold"))
         style.configure("Heading.TLabel", font=("Segoe UI", 14, "bold"))
@@ -40,7 +40,7 @@ class BillingApp(tk.Tk):
         notebook.pack(fill="both", expand=True, padx=12, pady=(0, 12))
 
         self.dashboard = DashboardFrame(notebook, self.service)
-        self.billing = BillingFrame(notebook, self.service, )
+        self.billing = BillingFrame(notebook, self.service,self.refresh_all )
         self.products = ProductsFrame(notebook, self.service)
         self.history = HistoryFrame(notebook, self.service)
 
@@ -49,13 +49,13 @@ class BillingApp(tk.Tk):
         notebook.add(self.products, text=" Products ")
         notebook.add(self.history, text=" History ")
 
-        # self.refresh_all()
+        self.refresh_all()
 
-    # def refresh_all(self):
-    #     self.products.refresh_products()
-    #     self.billing.refresh_products()
-    #     self.history.refresh_history()
-    #     self.dashboard.refresh_dashboard()
+    def refresh_all(self):
+        self.products.refresh_products()
+        self.billing.refresh_products()
+        self.history.refresh_history()
+        self.dashboard.refresh_dashboard()
 
     def destroy(self):
         self.db.close()

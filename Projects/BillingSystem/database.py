@@ -1,7 +1,7 @@
 import sqlite3
 from pathlib import Path
 
-DB_PATH = Path(__file__).resolve().parent / 'billing.db'
+DB_PATH = "billing.db"
 
 class Database:
     def __init__(self, path=DB_PATH):
@@ -9,7 +9,7 @@ class Database:
         self.conn.row_factory = sqlite3.Row
         self.conn.execute('PRAGMA foreign_keys = ON')
         self.create_tables()
-        self.seed_products()
+        # self.seed_products()
 
     def create_tables(self):
         self.conn.executescript('''
@@ -35,14 +35,14 @@ class Database:
         ''')
         self.conn.commit()
 
-    def seed_products(self):
-        if self.conn.execute('SELECT COUNT(*) c FROM products').fetchone()['c'] == 0:
-            self.conn.executemany(
-                'INSERT INTO products(name,category,price,stock) VALUES(?,?,?,?)',
-                [('Wireless Mouse','Computer',500,20),('Keyboard','Computer',800,12),
-                 ('USB Cable','Accessories',200,30),('Pendrive 32GB','Storage',450,15),
-                 ('Laptop Stand','Accessories',900,8)])
-            self.conn.commit()
+    # def seed_products(self):
+    #     if self.conn.execute('SELECT COUNT(*) c FROM products').fetchone()['c'] == 0:
+    #         self.conn.executemany(
+    #             'INSERT INTO products(name,category,price,stock) VALUES(?,?,?,?)',
+    #             [('Wireless Mouse','Computer',500,20),('Keyboard','Computer',800,12),
+    #              ('USB Cable','Accessories',200,30),('Pendrive 32GB','Storage',450,15),
+    #              ('Laptop Stand','Accessories',900,8)])
+    #         self.conn.commit()
 
     def add_product(self,name,category,price,stock):
         self.conn.execute('INSERT INTO products(name,category,price,stock) VALUES(?,?,?,?)',(name,category,price,stock)); self.conn.commit()
