@@ -121,7 +121,8 @@ class BillingFrame(ttk.Frame):
         try:
             d=float(self.discount.get() or 0)
             if not 0<=d<=100:raise ValueError('Discount must be between 0 and 100.')
-            iid=self.service.save_bill(self.customer.get(),self.phone.get(),self.payment.get(),self.cart,d);self.show(self.service.invoice_data(iid));self.clear();self.changed and self.changed()
+            iid=self.service.save_bill(self.customer.get(),self.phone.get(),self.payment.get(),self.cart,d);self.show(self.service.invoice_data(iid));self.clear();
+            self.changed and self.changed()
         except Exception as e:messagebox.showerror('Could Not Generate Bill',str(e))
     def show(self,inv):
         w=tk.Toplevel(self);w.title(inv['invoice_no']);w.geometry('500x560');t=tk.Text(w,font=('Consolas',10));t.pack(fill='both',expand=True,padx=10,pady=10)

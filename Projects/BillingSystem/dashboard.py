@@ -7,7 +7,8 @@ class DashboardFrame(ttk.Frame):
         self.sales=__import__('tkinter').StringVar();
         self.bills=__import__('tkinter').StringVar();
         self.products=__import__('tkinter').StringVar();
-        self.build();self.refresh_dashboard()
+        self.build();
+        self.refresh_dashboard()
     def build(self):
         ttk.Label(self,text='Dashboard',style='Heading.TLabel').pack(anchor='w',pady=(0,15));
         cards=ttk.Frame(self);cards.pack(fill='x')

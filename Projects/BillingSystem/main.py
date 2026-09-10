@@ -36,12 +36,12 @@ class BillingApp(tk.Tk):
         header.pack(fill="x")
         ttk.Label(header, text="Jaiswal Electronics", style="Title.TLabel").pack(side="left")
 
-        notebook = ttk.Notebook(self)
-        notebook.pack(fill="both", expand=True, padx=12, pady=(0, 12))
+        notebook = ttk.Notebook(self)# this is main window widget 
+        notebook.pack( padx=12,pady=(0,12)) # pady=0,12 means on y axis top=10 and bottom=12;
 
         self.dashboard = DashboardFrame(notebook, self.service)
         self.billing = BillingFrame(notebook, self.service,self.refresh_all )
-        self.products = ProductsFrame(notebook, self.service)
+        self.products = ProductsFrame(notebook, self.service,self.refresh_all)
         self.history = HistoryFrame(notebook, self.service)
 
         notebook.add(self.dashboard, text=" Dashboard ")
